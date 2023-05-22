@@ -1,5 +1,4 @@
 'use client'
-
 import * as React from 'react';
 import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -22,7 +21,11 @@ import MessagesIcon from '@mui/icons-material/EmailOutlined';
 import NewsIcon from '@mui/icons-material/ArticleOutlined';
 import GamesIcon from '@mui/icons-material/CasinoOutlined';
 import FriendsIcon from '@mui/icons-material/Diversity1Outlined';
+import AboutIcon from '@mui/icons-material/InfoOutlined';
+import SettingsIcon from '@mui/icons-material/SettingsOutlined';
+import FaqIcon from '@mui/icons-material/LiveHelpOutlined';
 import Tooltip from '@mui/material/Tooltip';
+import { Links } from '../Links/Links';
 
 const drawerWidth = 240;
 
@@ -98,12 +101,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
   const iconsArray = [
-    {title:'Профиль', icon:<ProfileIcon />},
-    {title: 'Друзья', icon: <FriendsIcon />},
-    {title:'Сообщения', icon:<MessagesIcon />},
-    {title:'Новости', icon:<NewsIcon />},
-    {title: 'Игры', icon:<GamesIcon />},
+    {title:'Профиль', icon:<ProfileIcon/>, path: 'profile'},
+    {title: 'Друзья', icon: <FriendsIcon />, path: 'friends'},
+    {title:'Сообщения', icon:<MessagesIcon />, path: 'messages'},
+    {title:'Новости', icon:<NewsIcon />, path: 'news'},
+    {title: 'Игры', icon:<GamesIcon />, path: 'games'},
+  ]
+
+  const bottomIcons = [
+    {title: 'О нас', icon: <AboutIcon />, path: 'about'},
+    {title: 'Настройки', icon: <SettingsIcon />, path: 'settings'},
+    {title: 'FAQ', icon: <FaqIcon />, path: 'FAQ'},
   ]
 
   const handleDrawerOpen = () => {
@@ -140,56 +150,62 @@ export default function MiniDrawer() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {iconsArray.map(({title,icon}, index) => (
+        <List sx={{flex: '1'}}>
+          {iconsArray.map(({title,icon,path}, index) => (
             <ListItem key={title} disablePadding sx={{ display: 'block' }}>
-              <Tooltip title={!open && title} placement='right'>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
+              <Links path={path}>
+                <Tooltip title={!open && title} placement='right'>
+                  <ListItemButton
                     sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
                     }}
                   >
-                  
-                    {icon}
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
                     
-                  </ListItemIcon>
-                  <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </Tooltip>
+                      {icon}
+                      
+                    </ListItemIcon>
+                    <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </Tooltip>
+              </Links>
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
+          {bottomIcons.map(({title, icon, path}, index) => (
+            <ListItem key={title} disablePadding sx={{ display: 'block' }}>
+              <Links path={path}>
+                <Tooltip title={!open && title} placement='right'>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {icon}
+                    </ListItemIcon>
+                    <ListItemText primary={title} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </Tooltip>
+              </Links>
             </ListItem>
           ))}
         </List>
