@@ -113,7 +113,7 @@ export default function MiniDrawer() {
   const bottomIcons = [
     {title: 'О нас', icon: <AboutIcon />, path: 'about'},
     {title: 'Настройки', icon: <SettingsIcon />, path: 'settings'},
-    {title: 'FAQ', icon: <FaqIcon />, path: 'FAQ'},
+    {title: 'FAQ', icon: <FaqIcon />, path: 'faq'},
   ]
 
   const handleDrawerOpen = () => {
@@ -128,7 +128,7 @@ export default function MiniDrawer() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} color='inherit' style={{boxShadow: 'none'}}>
-        <Toolbar sx={{borderRight: '1px solid', borderColor: 'rgba(0, 0, 0, 0.12)', width: 'calc(64px + 1px)', ...(open && {border: 'none'})}}>
+        <Toolbar sx={{color: 'blue',borderRight: '1px solid', borderColor: 'rgba(0, 0, 0, 0.12)', width: 'calc(64px + 1px)', ...(open && {border: 'none'})}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
