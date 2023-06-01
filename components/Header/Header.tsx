@@ -122,7 +122,7 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function MiniDrawer() {
+export default function Header() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -191,10 +191,10 @@ export default function MiniDrawer() {
       >
         <Toolbar
           sx={{
-            color: "blue",
-            borderRight: "1px solid",
+            // color: "blue",
+            // borderRight: "1px solid",
             borderColor: "rgba(0, 0, 0, 0.12)",
-            width: "calc(64px + 1px)",
+            width: "50px",
             ...(open && { border: "none" }),
           }}
         >
