@@ -1,0 +1,101 @@
+$color-for-text: #2F2F2F
+$color-blue: #3C55AC
+$color-white: #FFFFFF
+$color-shadow: #C4C4C4
+$color-yellow: #FEDA00
+
+button
+  border-radius: 4px
+  font-family: "Roboto", sans-serif
+  font-weight: 600
+  font-size: 16px
+  border: none
+  cursor: pointer
+  transition: 0.1s
+
+
+.button--variant-primary
+  color: $color-for-text
+  background-color: $color-yellow
+  text-align: center
+  border-radius: 4px
+  &:hover
+    background-color: $color-blue
+    color: #fff
+  &:active
+    background-color: $color-for-text
+
+.button--variant-secondary
+  color: $color-blue
+  background-color: $color-white
+  border: none
+  border-radius: 4px
+  &:hover
+    color: $color-for-text
+  &:active
+    color: $color-yellow
+
+.button--variant-tertiary
+  color: $color-blue
+  background-color: $color-white
+  border: 1px solid $color-blue
+  border-radius: 4px
+  &:hover
+    color: $color-for-text
+    border: 1px solid $color-for-text
+  &:active
+    color: $color-yellow
+    border: 1px solid $color-yellow
+
+.button--variant-quaternary
+  background-color: $color-white
+  color: $color-for-text
+  box-shadow:  0 3px 3px 0px $color-shadow
+  &:active
+    color: $color-yellow
+
+.button--variant-modal
+  background: #EBEBEB
+  color: $color-for-text
+  &:hover
+    background: #dddddd
+  &:active
+    background: #d5d5d5
+
+.button--height-50px
+  height: 50px
+
+.button--width-343px
+  width: 343px
+
+.button--width-130px
+  width: 130px
+
+.button--width-374px
+  width: 374px
+
+.button--width-187px
+  width: 187px
+
+.button--marginTop-57px
+  margin-top: 57px
+
+.button--marginTop-20px
+  margin-top: 20px
+
+
+.button--marginTop-45px
+  margin-top: 45px
+
+.button--disabled-true
+  background: #616161
+  cursor: none
+
+button:disabled
+  background: #EBEBEB
+  color: #B2B2B2
+  &:hover
+    background: #EBEBEB
+    color: #B2B2B2
+    cursor: auto
+

@@ -1,0 +1,58 @@
+$color-grey: #EBEBEB
+$tablet: 900px
+$small-tablet: 720px
+$phone: 480px
+
+.background
+  z-index: 999
+  background: #000
+  opacity: 0.3
+  height: 100%
+  width: 100%
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  overflow: hidden
+
+.modal 
+  background: white
+  min-height: 35%
+  min-width: 450px
+
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-content: center
+  flex-wrap: wrap
+  text-align: center
+  padding: 40px
+  gap: 20px
+
+  border: 3px solid $color-grey
+  border-radius: 7px
+
+  position: fixed
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  z-index: 999
+
+.close-btn
+  margin: 0 auto
+  padding: 15px 50px
+
+@media screen and ( max-width: $tablet )
+  .modal 
+    flex-direction: row
+    align-content: space-around
+  .btn-container
+    flex-direction: column
+
+@media screen and ( max-width: $small-tablet )
+  .modal
+    width: 60%
+
+@media screen and ( max-width: $phone )
+  .modal
+    width: 90%
