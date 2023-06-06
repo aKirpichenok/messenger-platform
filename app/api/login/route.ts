@@ -1,24 +1,22 @@
-// import prisma from "@/prisma/prisma";
-// import * as bcrypt from 'bcrypt'
+import { connectToDatabase } from '@/db/mongodb';
+import * as bcrypt from 'bcrypt'
 
-// interface ReqBody {
-//   username: string;
-//   password: string;
-// }
+interface ReqBody {
+  email: string;
+  password: string;
+}
 
-// export async function POST(req: Request) {
-//   const body: ReqBody = await req.json();
+export async function POST(req: Request) {
+  const { email, password }: ReqBody = await req.json();
+
+  const db: any = await connectToDatabase()
+
+  const user = await db.collection('users').findOne({ email })
 
 
-//   const user = await prisma.user.findFirst({
-//     where: {
-//       email: body.username
-//     }
-//   })
+  if (user && (await bcrypt.compare(password, user.password))) {
+    const { password, ...userWithoutPass } = user
 
-//   if (user && (await bcrypt.compare(body.password, user.password))) {
-//     const { password, ...userWithoutPass } = user
-
-//     return new Response(JSON.stringify(userWithoutPass))
-//   } else return new Response(JSON.stringify(null))
-// }
+    return new Response(JSON.stringify(userWithoutPass))
+  } else return new Response(JSON.stringify(null))
+}
