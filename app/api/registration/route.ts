@@ -1,31 +1,24 @@
-import { connectToDatabase } from '@/db/mongodb';
-import * as bcrypt from 'bcrypt'
-
-interface ReqBody {
-  name: string;
-  email: string;
-  password: string;
-}
-
+import dbConnect from '@/db/dbConnect';
+import { UserModel } from '@/db/models/user.schema';
+import { createUser } from '@/db/services/userService';
 export async function POST(req: Request) {
 
-  const { name, email, password }: ReqBody = await req.json()
+  const body = await req.json()
 
-  const db: any = await connectToDatabase()
+  await dbConnect()
 
-  const isExestingUser = await db.collection('users').findOne({ email })
+  const isExestingUser = await UserModel.findOne({ email: body.email })
   if (isExestingUser) {
-    return new Response(JSON.stringify({ message: 'User with this email already exists' }));
+    return new Response(JSON.stringify({ message: 'Этот email уже занят' }), { status: 400 })
+  }
+
+  const user = await createUser(body)
+
+  if (user) {
+    const { _id } = user
+
+    return new Response(JSON.stringify({ id: _id }));
   }
 
 
-  const user = await db.collection('users').insertOne({
-    name: name,
-    email: email,
-    password: await bcrypt.hash(password, 10),
-    adressId: 'some adress'
-  })
-
-
-  return new Response(JSON.stringify(user.insertedId));
 }

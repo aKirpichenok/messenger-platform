@@ -1,22 +1,20 @@
-import { connectToDatabase } from '@/db/mongodb';
-import * as bcrypt from 'bcrypt'
-
-interface ReqBody {
-  email: string;
-  password: string;
-}
+import dbConnect from '@/db/dbConnect';
+import { UserModel } from '@/db/models/user.schema';
+import { loginUser } from '@/db/services/userService';
 
 export async function POST(req: Request) {
-  const { email, password }: ReqBody = await req.json();
 
-  const db: any = await connectToDatabase()
+  const body = await req.json()
 
-  const user = await db.collection('users').findOne({ email })
+  const user = await loginUser(body)
+
+  if (user) {
+    const { _id } = user
+
+    return new Response(JSON.stringify({ id: _id }));
+  }
+
+  return new Response(JSON.stringify({ message: 'Неверный логин или пароль' }), { status: 400 })
 
 
-  if (user && (await bcrypt.compare(password, user.password))) {
-    const { password, ...userWithoutPass } = user
-
-    return new Response(JSON.stringify(userWithoutPass))
-  } else return new Response(JSON.stringify(null))
 }
