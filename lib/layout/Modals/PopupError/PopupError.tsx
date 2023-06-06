@@ -1,12 +1,11 @@
 // import { setOpenModal } from "@.landing/toolkitRedux";
-import { ModalWindow } from "@/layouts/components/ModalWindow/ModalWindow";
+import { ModalWindow } from "@/lib/ui/ModalWindow/ModalWindow";
 // import { useDispatch } from "react-redux";
 
 import errorPopupImg from "/libs/img/errorPopup.png";
 import Image from "next/image";
-import { Button } from "@/layouts/components/Button/Button";
-import { useRouter } from "next/router";
-import { Typography } from "@/layouts/components/Typography/Typography";
+import { Button } from "@/lib/ui/Button/Button";
+import { Typography } from "@/lib/ui/Typography/Typography";
 
 export const PopupError = () => {
   // const dispatch = useDispatch();
