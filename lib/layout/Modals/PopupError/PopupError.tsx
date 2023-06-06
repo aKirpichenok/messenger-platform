@@ -5,6 +5,7 @@ import { ModalWindow } from "@/lib/ui/ModalWindow/ModalWindow";
 import errorPopupImg from "/libs/img/errorPopup.png";
 import Image from "next/image";
 import { Button } from "@/lib/ui/Button/Button";
+
 import { Typography } from "@/lib/ui/Typography/Typography";
 
 export const PopupError = () => {
