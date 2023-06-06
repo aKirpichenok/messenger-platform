@@ -2,11 +2,16 @@
   "name": "messenger-platform",
   "version": "0.1.0",
   "private": true,
+  "resolutions": {
+    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.cd77847.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.2.32",
@@ -29,9 +34,17 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.0.18",
+    "@storybook/addon-interactions": "^7.0.18",
+    "@storybook/addon-links": "^7.0.18",
+    "@storybook/blocks": "^7.0.18",
+    "@storybook/nextjs": "^7.0.18",
+    "@storybook/react": "^7.0.18",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/bcrypt": "^5.0.0",
     "@types/negotiator": "^0.6.1",
     "prettier": "2.8.8",
-    "sass": "^1.62.1"
+    "sass": "^1.62.1",
+    "storybook": "^7.0.18"
   }
 }

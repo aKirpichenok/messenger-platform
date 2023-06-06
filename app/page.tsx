@@ -1,4 +1,4 @@
-import { Locale } from "@/i18n-config";
+import { Locale } from "@/configs/i18n-config";
 import { getDictionary } from "@/dictionaries/getDictionary";
 
 export default async function IndexPage({
