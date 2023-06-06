@@ -1,5 +1,5 @@
 import 'server-only'
-import type { Locale } from '@/i18n-config'
+import type { Locale } from '@/configs/i18n-config'
 
 
 const dictionaries: { [key: string]: () => Promise<{ [key: string]: { [key: string]: string } }> } = {

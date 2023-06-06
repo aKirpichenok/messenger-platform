@@ -1,0 +1,9 @@
+npm ERR! code EBADENGINE
+npm ERR! engine Unsupported engine
+npm ERR! engine Not compatible with your version of node/npm: messenger-platform@0.1.0
+npm ERR! notsup Not compatible with your version of node/npm: messenger-platform@0.1.0
+npm ERR! notsup Required: {"node":">=18.13.0","npm":"please-use-npm"}
+npm ERR! notsup Actual:   {"npm":"8.19.3","node":"v18.13.0"}
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\Lenovo\AppData\Local\npm-cache\_logs\2023-06-06T13_22_34_109Z-debug-0.log
