@@ -1,4 +1,4 @@
-import { PopupError } from "@/layouts/ui/Modals/PopupError/PopupError";
+import { PopupError } from "@/lib/layout/Modals/PopupError/PopupError";
 
 type PropTypes = {
   modalType?: string;
